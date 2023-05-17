@@ -1,4 +1,4 @@
-const data = require('./db/db.json');
+const data = require('./db.json');
 
 module.exports = () => ({
   data: data,
