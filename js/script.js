@@ -6,6 +6,7 @@ import slider from "./modules/slider";
 import forms from "./modules/forms";
 import timer from "./modules/timer";
 import cards from "./modules/cards";
+import userService from "./modules/userService";
 import { openModal } from "./modules/modal";
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -30,4 +31,5 @@ window.addEventListener("DOMContentLoaded", () => {
   forms("form", modalTimerId);
   timer('.timer', '2023-06-11');
   cards();
+  userService("[service-modal]","#service-modal","Ваша функция по заказу");
 });

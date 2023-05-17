@@ -1,6 +1,9 @@
 import { getResource } from "../services/services";
 
 function cards() {
+  const pathAPI = process.env.NODE_ENV === 'development'
+  ? `http://localhost:3001/api/menu`
+  : `https://raw.githubusercontent.com/DVorobiev1968/food/gh-pages/static/db/db.json`;
   class MenuCard {
     constructor(src, alt, title, descr, price, parentSelector, ...classes) {
         this.src = src;
@@ -42,7 +45,7 @@ function cards() {
     }
   }
 
-  getResource('http://localhost:3000/menu')
+  getResource(pathAPI)
     .then(data => {
         data.forEach(({img, altimg, title, descr, price}) => {
             new MenuCard(img, altimg, title, descr, price, ".menu .container").render();

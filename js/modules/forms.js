@@ -32,7 +32,7 @@ function forms(formSelector,modalTimerId){
       // Оборачиваем форму в объект
       const json = JSON.stringify(Object.fromEntries(formData.entries()));
 
-      postData("http://localhost:3000/requests", json)
+      postData("http://localhost:3000/api/requests", json)
         .then((data) => {
           console.log(data);
           showThanksModal(message.success);
