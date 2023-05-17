@@ -3,7 +3,7 @@ import { getResource } from "../services/services";
 function cards() {
   const pathAPI = process.env.NODE_ENV === 'development'
   ? `http://localhost:3000/api/menu`
-  : `https://raw.githubusercontent.com/DVorobiev1968/food/gh-pages/static/db/db.json`;
+  : `https://raw.githubusercontent.com/DVorobiev1968/food/gh-pages/db/db.json`;
   class MenuCard {
     constructor(src, alt, title, descr, price, parentSelector, ...classes) {
         this.src = src;

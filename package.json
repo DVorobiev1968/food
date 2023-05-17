@@ -7,7 +7,7 @@
   "scripts": {
     "save-json-api": "node ./js/save-json-api.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode=production --node-env=production",
+    "build": "webpack --mode=production --node-env=production && npm run save-json-api",
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch",
