@@ -20,7 +20,11 @@ const paths = [{
 
 function mkDir(target){
   fs.mkdir(target, { recursive: true }, (err) => {
-    if (err) throw err;
+    if (err) {
+      throw err;
+    } else {
+      console.log(target,' created success!');
+    }
 })};
 
 
@@ -47,14 +51,13 @@ function writeDB(){
 }
 
 function startCopyFile(src, dest){
-  // let srcPath;
-  // let destPath;
   fs.readdir(src, function(err, items){
     for (let i = 0; i < items.length; i++){
       const srcPath=`${src}/${items[i]}`;
       const destPath=`${dest}/${items[i]}`;
       if (fs.lstatSync(srcPath).isDirectory()){
         console.log(srcPath,' its directory');
+        mkDir(destPath);
         startCopyFile(srcPath,destPath);
       } 
       else {
@@ -71,13 +74,9 @@ paths.forEach((element,i)=>{
     destDir=pathDist+element.name;
     srcDir='./'+element.name;
     mkDir(destDir);
-    console.log(destDir,' created success!');
     startCopyFile(srcDir,destDir);
   }catch (error) {
     console.log(error.message);
   }}
 );
-
-fs.mkdir(pathDist+'/static/db', 0777, () => {
-});
 

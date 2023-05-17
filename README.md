@@ -13,7 +13,27 @@ npm install --save-dev json-server
 <pre>
 { "/api/*": "/$1" }
 </pre>
-Настраиваем запуск json-server в соответствующей секции package.json
+<ol>
+<li>save-json-api подготовка необходимого окружения (папки файлы в dist)
+<li>build производит подготовку окружения production
+<li>Настраиваем запуск json-server в соответствующей секции package.json
+<li>predeploy предварительно очищаем dist
+</ol>
 <pre>
-    "preserve": "json-server --watch ./server/index.js --routes ./src/server/routes.json --port 3001",
+  "scripts": {
+    "save-json-api": "node ./js/save-json-api.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode=production --node-env=production && npm run save-json-api",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch",
+    "serve": "json-server --watch ./db/db.json --routes ./server/routes.json --port 3000",
+    "predeploy": "rm -rf dist && npm run build",
+    "deploy": "gh-pages -d dist"
+  }
 </pre>
+Сборка и выкат production
+<pre>
+npm run deploy
+</pre>
+<a href="https://dvorobiev1968.github.io/food/">Посомотреть pet-проект</a>

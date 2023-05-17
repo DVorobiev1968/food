@@ -47,7 +47,8 @@ function cards() {
 
   getResource(pathAPI)
     .then(data => {
-        data.forEach(({img, altimg, title, descr, price}) => {
+        console.log(data.menu);
+        data.menu.forEach(({img, altimg, title, descr, price}) => {
             new MenuCard(img, altimg, title, descr, price, ".menu .container").render();
         });
     });
